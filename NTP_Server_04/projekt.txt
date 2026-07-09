@@ -1,0 +1,125 @@
+Projekt: GPS-NTP-Server
+
+Pierwsza wersja robocza: 04.00.01
+
+Zakres wersji 04.00.01
+✔ Utworzenie struktury projektu.
+✔ NTP_Server.ino
+✔ config.h
+✔ version.h
+✔ debug.h
+✔ Sprawdzenie kompilacji.
+✔ Przygotowanie listy wymaganych bibliotek.
+✔ Przygotowanie README.md, CHANGELOG.md i .gitignore.
+
+====================================================
+GPS-NTP-Server
+
+Wersja bazowa	04.00.01
+
+Środowisko	Arduino IDE 1.8.x
+ESP32 Arduino Core	ESP32 WROOM Mini D1
+Biblioteki
+Wire
+WiFi
+WiFiUDP
+WebServer
+SSD1306
+TinyGPSPlus
+WiFiManager
+
+Preferences
+
+Sprzęt
+ESP32 WROOM Mini D1
+GPS GY-NEO6MV2
+OLED SSD1306 64×48
+SW1
+PPS — nieużywany w wersji 04.00
+
+Architektura
+Kod podzielony na moduły.
+Każdy moduł ma jedno zadanie.
+Kompilacja po zakończeniu każdego modułu.
+Brak delay() w głównej pętli (loop()).
+Styl kodu
+Komentarze po polsku.
+Zachowanie Twojego stylu formatowania.
+Funkcje zamiast rozbudowanych klas.
+HTML budowany klasycznie (page +=).
+Biblioteka SSD1306 pozostaje bez zmian.
+Repozytorium
+GPS-NTP-Server
+
+Branch:
+
+main
+
+Bez dodatkowych gałęzi i tagów.
+-------------------------------------------------------------------------
+Pliki:
+
+NTP_Server.ino
+config.h
+version.h
+debug.h
+README.md
+CHANGELOG.md
+.gitignore
+
+------------------------------------------------------------------------
+
+             TinyGPS++
+                 │
+                 ▼
+             gps.cpp / gps.h
+                 │
+     ┌───────────┼───────────┐
+     ▼           ▼           ▼
+   OLED        WWW         NTP
+
+Architektura projektu:
+GPS
+   │
+TinyGPS++
+   │
+gps.cpp
+   │
+gps.h
+   │
+ ├── oled.cpp
+ ├── ntp.cpp
+ ├── web.cpp
+ └── main.ino
+ ------------------------------------------------------------------------
+ Założenia projektu:
+
+✅ Arduino IDE 1.8.x
+
+✅ ESP32 WROOM Mini D1
+
+✅ OLED SSD1306 (pozostaje obecna biblioteka)
+
+✅ TinyGPS++
+
+✅ WiFiManager
+
+✅ klasyczne HTML (page += ...)
+
+✅ moduły .cpp/.h
+
+✅ komentarze po polsku
+
+✅ brak klas C++ (poza bibliotekami)
+
+✅ jedna globalna struktura GPS_DATA
+
+✅ przyszła obsługa RTC
+
+✅ przygotowanie pod PPS (bez użycia w wersji 04.xx)
+
+✅ docelowo Stratum 1 zgodny z RFC 5905
+
+------------------------------------------------------------------------
+ 
+
